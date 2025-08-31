@@ -1,35 +1,44 @@
 {
   "name": "rafa3",
   "version": "0.0.0",
+  "main": "main.js",
+  "author": "Rafaelko OZ",
+  "description": "Accounting for OZ",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "electron-build": "ng build && electron .",
+    "dist": "npm run build && electron-builder"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.1.2",
-    "@angular/common": "~11.1.2",
-    "@angular/compiler": "~11.1.2",
-    "@angular/core": "~11.1.2",
-    "@angular/forms": "~11.1.2",
-    "@angular/platform-browser": "~11.1.2",
-    "@angular/platform-browser-dynamic": "~11.1.2",
-    "@angular/router": "~11.1.2",
+    "@angular/animations": "~17.3.4",
+    "@angular/cdk": "^17.3.5",
+    "@angular/common": "~17.3.4",
+    "@angular/compiler": "~17.3.4",
+    "@angular/core": "~17.3.4",
+    "@angular/forms": "~17.3.4",
+    "@angular/platform-browser": "~17.3.4",
+    "@angular/platform-browser-dynamic": "~17.3.4",
+    "@angular/router": "~17.3.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.3"
+    "zone.js": "~0.14.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1101.4",
-    "@angular/cli": "~11.1.4",
-    "@angular/compiler-cli": "~11.1.2",
+    "@angular-devkit/build-angular": "~17.3.5",
+    "@angular/cli": "~17.3.5",
+    "@angular/compiler-cli": "~17.3.4",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",
@@ -40,6 +49,12 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.2"
+    "typescript": "~5.4.5"
+  },
+  "build": {
+    "appId": "ID",
+    "win": {
+      "target": "portable"
+    }
   }
 }
