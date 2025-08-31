@@ -1,0 +1,4 @@
+<select (change)="onSelectChange($event)">
+    <option value="-">-</option>
+    <option *ngFor="let value of values" [value]="value">{{ value }}</option>
+</select>

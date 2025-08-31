@@ -1,0 +1,13 @@
+<h1>Converting FIO Banka payment list</h1>
+<input type="file" #fileInput (change)="uploadFile($event)" />
+<table>
+    <tbody>
+        <tr>
+            <td>Rows retrieved: <strong>{{csvData.length}}</strong></td>
+        </tr>
+        <div id="content">
+            <tr><pre>{{filteredData}}</pre></tr>
+        </div>
+    </tbody>
+</table>
+<button [disabled]="filteredData === ''" (click)="copyToClipboard(filteredData)">COPY to clipboard</button>

@@ -1,0 +1,49 @@
+<h1>MAIN accounting book</h1>
+<input type="file" #fileInput (change)="uploadFile($event)" />
+<table>
+    <thead>
+        <tr id="headerRow">
+            <th *ngFor="let header of headers; let i = index" [class]="'header'+i">
+                <ng-container> {{header.name}} </ng-container><br>
+                <ng-container *ngIf="i === 0"> Od:
+                    <input type="date" [attr.value]="fromDateFilter"
+                        (change)="onChange('dateFrom', eventToString($event))" />
+                    <br>
+                    Do:
+                    <input type="date" [attr.value]="toDateFilter"
+                        (change)="onChange('dateTo', eventToString($event))" />
+                </ng-container>
+                <ng-container>
+                    <app-dynamic-select *ngIf="header.nodeType == 'select'" [values]="createSelect(header.nodeName)"
+                        (valueChanged)="onChange(header.nodeName, $event)"></app-dynamic-select>
+                </ng-container>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="7">Rows retrieved: <strong>{{filteredData.length}}</strong> | Invalid fields:
+                <strong>{{invalidFieldCount}}</strong></td>
+        </tr>
+        <tr *ngFor="let row of filteredData">
+            <td *ngFor="let cell of row.slice(0, -1); let i = index" [ngStyle]="{
+                'background-color': row[row.length - 1].includes(i) ? 'red' : 'inherit', 
+                'text-align': i === 3 ? 'right' : 'left'}">
+                <div *ngIf="i===3; else nonNumberTemplate">{{ cell | number: '1.2-2' }}</div>
+                <ng-template #nonNumberTemplate>
+                    <div>{{ cell }}</div>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td *ngFor="let header of headers; let i = index" [ngStyle]="{'text-align': 'right'}">
+                <div *ngIf="header.name === 'Suma'; else noSumTemplate">{{ calculateSum(i) | number: '1.2-2' }}</div>
+                <ng-template #noSumTemplate>
+                    <div></div>
+                </ng-template>
+            </td>
+        </tr>
+    </tfoot>
+</table>
