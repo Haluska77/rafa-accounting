@@ -1,17 +1,15 @@
 {
   "name": "rafa3",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "main.js",
   "author": "Rafaelko OZ",
   "description": "Accounting for OZ",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build",
     "lint": "ng lint",
-    "electron": "electron .",
-    "electron-build": "ng build && electron .",
-    "dist": "npm run build && electron-builder"
+    "electron": "npx electron .",
+    "electron-build": "npx electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -31,17 +29,22 @@
     "@angular/compiler-cli": "^18.2.13",
     "@types/node": "20.14",
     "angular-eslint": "20.2.0",
-    "electron": "^30.0.0",
-    "electron-builder": "^24.13.3",
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12",
     "eslint": "^9.33.0",
     "ts-node": "^10.9.2",
     "typescript": "5.5.4",
     "typescript-eslint": "8.40.0"
   },
   "build": {
-    "appId": "ID",
-    "win": {
-      "target": "portable"
+    "appId": "rafa-app",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
     }
   }
 }

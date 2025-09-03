@@ -7,9 +7,8 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 600,
-    // icon: '',
+    icon: path.join(__dirname, 'assets', 'IconOnly.ico'),
     webPreferences: {
-      // webSecurity: false,
       nodeIntegration: true,
       contextIsolation: false,
       contentSecurityPolicy: {
@@ -23,37 +22,28 @@ function createWindow() {
     }
   });
 
-  // mainWindow.loadFile(path.join(__dirname, 'dist/rafa3/index.html'));
-  mainWindow.loadURL(`file://${__dirname}/build/index.html`);
-  // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, 'build/index.html'), // relative path to the HTML-file
-  //   protocol: "file:",
-  //   slashes: true
-  // }));
-  mainWindow.webContents.openDevTools();
-  // const menu = Menu.buildFromTemplate([
-  //   {
-  //     label: 'File',
-  //     submenu: [
-  //       // Other menu items...
-  //     ]
-  //   },
-  //   {
-  //     label: 'Help',
-  //     submenu: [
-  //       {
-  //         label: 'About Rafaelko',
-  //         click: () => {
-  //           // Show about dialog or any other action
-  //           showDialog();
-  //         }
-  //       }
-  //     ]
-  //   }
-  // ]);
+  mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'File',
+      submenu: [
+        // Other menu items...
+      ]
+    },
+    {
+      label: 'Help',
+      submenu: [
+        {
+          label: 'About Rafaelko',
+          click: () => {
+            showDialog();
+          }
+        }
+      ]
+    }
+  ]);
 
-  // Set the menu
-  // Menu.setApplicationMenu(menu);
+  Menu.setApplicationMenu(menu);
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -71,10 +61,9 @@ app.on('activate', function () {
 });
 
 function showDialog() {
-  // Implement your About dialog here
   const aboutDialogOptions = {
     title: 'About Rafaelko account app',
-    message: 'Your app description or any other information.',
+    message: 'Pick up csv file with financial operation',
     buttons: ['OK']
   };
 
