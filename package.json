@@ -38,13 +38,14 @@
   },
   "build": {
     "appId": "rafa-app",
+    "electronLanguages": ["en-US", "sk"],
     "files": [
       "dist/**/*",
       "main.js",
       "package.json"
     ],
-    "directories": {
-      "buildResources": "assets"
+    "win": {
+      "icon": "assets/IconOnly.ico"
     }
   }
 }
